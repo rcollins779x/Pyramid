@@ -53,11 +53,8 @@ public class Hangman {
     }
     static String StringChoice(String temp) {
         Scanner cin = new Scanner(System.in);                                       //Init Scanner
-        do {
-            temp = cin.nextLine();
-            if(temp.length() == 0) System.out.println("Please try again. That is not a valid string.\n");
-        } while (temp.length() == 0);
-        cin.close();
+        for(temp = cin.nextLine();temp.length() == 0;temp = cin.nextLine())
+            System.out.println("Please try again. That is not a valid string.\n");
         return temp;
     }
 }
