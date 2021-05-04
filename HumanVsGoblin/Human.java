@@ -4,7 +4,7 @@ public class Human {
     private String name;
     protected int potions, HP, x, y, w, z;
     Human() {
-        name = "unknown";
+        name = "Leroy";
         w = z = potions = 0;
         HP = 100;
         x = 10;
@@ -23,15 +23,9 @@ public class Human {
         this.name = name;
     }
 
-    public boolean input(String choice) {
-        if(choice.equals("Q")) return false;
-        w = x;
-        z = y;
-        if(choice.equals("W")) if(y > 0)  --y;
-        if(choice.equals("S")) if(y < 10) ++y;
-        if(choice.equals("A")) if(x > 0)  --x;
-        if(choice.equals("D")) if(x < 20) ++x;
-        return true;
-    }
+    public void setW(int x) { w = x; }
+    public void setZ(int y) { z = y; }
+    public void setY(int y) { this.y += y; }
+    public void setX(int x) { this.x += x; }
 }
 
