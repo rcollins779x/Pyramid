@@ -1,7 +1,5 @@
 package SandBox;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class SandBox {
     public static ArrayList<Integer> solution(ArrayList<Integer> nums) {
@@ -34,9 +32,19 @@ public class SandBox {
         String temp = "())";
         int[] A = { 1, 2, 3, 4, 5 };
         int sum = Arrays.stream(A).reduce(0, (x, y) -> x + y);
-
+        Random rand = new Random();
         System.out.println("The sum of all the array elements is " + sum);
-        System.out.println("Return: " + solution(list));
+        char test = CharChoice();
 
+        System.out.println(test);
+        //System.out.println("Return: " + solution(list));
+
+    }
+    static char CharChoice() {
+        String temp;
+        Scanner cin = new Scanner(System.in);                                       //Init Scanner
+        for(temp = cin.nextLine(); temp.length() != 1; temp = cin.nextLine())
+            System.out.println("Please try again. That is not a valid string.\n");
+        return temp.charAt(0) > 96 ? (char) (temp.charAt(0) - 32) : temp.charAt(0);
     }
 }

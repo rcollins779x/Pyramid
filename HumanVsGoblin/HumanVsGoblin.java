@@ -16,10 +16,9 @@ public class HumanVsGoblin {
         char choice;
         game.init();
         do {
+            game.print();
             choice = CharChoice();
             game.moveHuman(choice);
-            game.print();
-            //game.moveGoblins();
         } while (isGameOver(choice));
 
     }
@@ -48,12 +47,12 @@ public class HumanVsGoblin {
         return temp.length() == 0;
     }
 
-    static int IntChoice() throws IOException {
+    static int IntChoice() {
         Scanner cin = new Scanner(System.in);                                       //Init Scanner
         String temp;
         for(temp = cin.nextLine(); isInt(temp);temp = cin.nextLine())
            if(isInt(temp)) System.out.println("Please try again. " + (temp.equals("") ? "That" : temp) + " is not a valid integer.\n");
-        return System.in.read();
+        return Integer.parseInt(temp);
     }
 
 
