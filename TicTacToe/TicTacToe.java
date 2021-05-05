@@ -11,117 +11,62 @@ public class TicTacToe {
         init(loc);
 
         System.out.println("Welcome to Tic-Tac-Toe!\nDo you want to be X or O?");
-        char player = CharChoice(), comp = player == 'X' ? 'O' : 'X';
+        char ox = CharChoice(), comp = ox == 'X' ? 'O' : 'X';
 
         System.out.println("The computer will go first.");
         computerTurn(loc, comp);
         board(loc);
-        System.out.println("What is your next move?");
-        int choice = IntChoice();
+        System.out.print("What is your next move? ");
+        playerTurn(loc, ox);
+        board(loc);
+    }
+
+    private static void playerTurn(char[][] loc, char ox) {
+        int choice;
+
+        for (choice = IntChoice(); loc[(choice - 1) / 3][(choice - 1) % 3] != ' ';choice = IntChoice())
+            System.out.println("That cell is not available.");
+        loc[(choice - 1) / 3][(choice -1) % 3] = ox;
     }
 
     private static void computerTurn(char[][] loc, char xo) {
         char ox = xo == 'X' ? 'O' : 'X';
         int counter = 0;
         if (loc[0][0] != ox && loc[1][1] != ox && loc[2][2] != ox) {
-            if (loc[0][0] == ' ' && counter == 0) {
-                loc[0][0] = xo;
-                counter++;
-            }
-            if (loc[2][2] == ' ' && counter == 0) {
-                loc[2][2] = xo;
-                counter++;
-            }
-            if (loc[1][1] == ' ' && counter == 0) {
-                loc[1][1] = xo;
-                counter++;
-            }
+            if (loc[0][0] == ' ' && counter == 0) { loc[0][0] = xo; counter++; }
+            if (loc[2][2] == ' ' && counter == 0) { loc[2][2] = xo; counter++; }
+            if (loc[1][1] == ' ' && counter == 0) { loc[1][1] = xo; counter++; }
         }
         if (loc[0][0] != ox && loc[0][1] != ox && loc[0][2] != ox) {
-            if (loc[0][0] == ' ' && counter == 0) {
-                loc[0][0] = xo;
-                counter++;
-            }
-            if (loc[0][2] == ' ' && counter == 0) {
-                loc[0][2] = xo;
-                counter++;
-            }
-            if (loc[0][1] == ' ' && counter == 0) {
-                loc[0][1] = xo;
-                counter++;
-            }
+            if (loc[0][0] == ' ' && counter == 0) { loc[0][0] = xo; counter++; }
+            if (loc[0][2] == ' ' && counter == 0) { loc[0][2] = xo; counter++; }
+            if (loc[0][1] == ' ' && counter == 0) { loc[0][1] = xo; counter++; }
         }
         if (loc[0][0] != ox && loc[1][0] != ox && loc[2][0] != ox) {
-            if (loc[0][0] == ' ' && counter == 0) {
-                loc[0][0] = xo;
-                counter++;
-            }
-            if (loc[2][0] == ' ' && counter == 0) {
-                loc[2][0] = xo;
-                counter++;
-            }
-            if (loc[1][0] == ' ' && counter == 0) {
-                loc[1][0] = xo;
-                counter++;
-            }
+            if (loc[0][0] == ' ' && counter == 0) { loc[0][0] = xo; counter++; }
+            if (loc[2][0] == ' ' && counter == 0) { loc[2][0] = xo; counter++; }
+            if (loc[1][0] == ' ' && counter == 0) { loc[1][0] = xo; counter++; }
         }
         if (loc[2][0] != ox && loc[2][1] != ox && loc[2][2] != ox) {
-            if (loc[2][0] == ' ' && counter == 0) {
-                loc[2][0] = xo;
-                counter++;
-            }
-            if (loc[2][2] == ' ' && counter == 0) {
-                loc[2][2] = xo;
-                counter++;
-            }
-            if (loc[2][1] == ' ' && counter == 0) {
-                loc[2][1] = xo;
-                counter++;
-            }
+            if (loc[2][0] == ' ' && counter == 0) { loc[2][0] = xo; counter++; }
+            if (loc[2][2] == ' ' && counter == 0) { loc[2][2] = xo; counter++; }
+            if (loc[2][1] == ' ' && counter == 0) { loc[2][1] = xo; counter++; }
         }
         if (loc[0][2] != ox && loc[1][2] != ox && loc[2][2] != ox) {
-            if (loc[0][2] == ' ' && counter == 0) {
-                loc[0][2] = xo;
-                counter++;
-            }
-            if (loc[2][2] == ' ' && counter == 0) {
-                loc[2][2] = xo;
-                counter++;
-            }
-            if (loc[1][2] == ' ' && counter == 0) {
-                loc[1][2] = xo;
-                counter++;
-            }
+            if (loc[0][2] == ' ' && counter == 0) { loc[0][2] = xo; counter++; }
+            if (loc[2][2] == ' ' && counter == 0) { loc[2][2] = xo; counter++; }
+            if (loc[1][2] == ' ' && counter == 0) { loc[1][2] = xo; counter++; }
         }
         if (loc[0][1] != ox && loc[1][1] != ox && loc[2][1] != ox) {
-            if (loc[1][1] == ' ' && counter == 0) {
-                loc[1][1] = xo;
-                counter++;
-            }
-            if (loc[0][1] == ' ' && counter == 0) {
-                loc[0][1] = xo;
-                counter++;
-            }
-            if (loc[2][1] == ' ' && counter == 0) {
-                loc[2][1] = xo;
-                counter++;
-            }
+            if (loc[1][1] == ' ' && counter == 0) { loc[1][1] = xo; counter++; }
+            if (loc[0][1] == ' ' && counter == 0) { loc[0][1] = xo; counter++; }
+            if (loc[2][1] == ' ' && counter == 0) { loc[2][1] = xo; counter++; }
         }
         if (loc[1][0] != ox && loc[1][1] != ox && loc[1][2] != ox) {
-            if (loc[1][1] == ' ' && counter == 0) {
-                loc[1][1] = xo;
-                counter++;
-            }
-            if (loc[1][0] == ' ' && counter == 0) {
-                loc[1][0] = xo;
-                counter++;
-            }
-            if (loc[1][2] == ' ' && counter == 0) {
-                loc[1][2] = xo;
-                counter++;
-            }
+            if (loc[1][1] == ' ' && counter == 0) { loc[1][1] = xo; counter++; }
+            if (loc[1][0] == ' ' && counter == 0) { loc[1][0] = xo; counter++; }
+            if (loc[1][2] == ' ' && counter == 0) { loc[1][2] = xo; counter++; }
         }
-
     }
 
     private static void init(char[][] loc) {
