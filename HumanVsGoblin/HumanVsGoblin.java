@@ -1,5 +1,4 @@
 package HumanVsGoblin;
-import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.Character.isDigit;
@@ -16,11 +15,11 @@ public class HumanVsGoblin {
         char choice;
         game.init();
         do {
-            game.print();
             choice = CharChoice();
-            game.moveHuman(choice);
+            game.checkDestination(choice);
+            game.update(choice);
+            game.print();
         } while (isGameOver(choice));
-
     }
 
     static char CharChoice() {

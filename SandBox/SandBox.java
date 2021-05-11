@@ -33,10 +33,9 @@ public class SandBox {
         int[] A = { 1, 2, 3, 4, 5 };
         int sum = Arrays.stream(A).reduce(0, (x, y) -> x + y);
         Random rand = new Random();
-        System.out.println("The sum of all the array elements is " + sum);
-        char test = CharChoice();
+        for(int i = 0; i < 132; i++)
+            System.out.print((char)i + " ");
 
-        System.out.println(test);
         //System.out.println("Return: " + solution(list));
 
     }
