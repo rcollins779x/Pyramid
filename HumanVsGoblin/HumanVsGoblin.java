@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 import static java.lang.Character.isDigit;
 
-public class HumanVsGoblin {
+class HumanVsGoblin {
     public static void main(String[] args) {
         Game game = new Game();
 

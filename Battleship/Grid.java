@@ -1,9 +1,9 @@
 package Battleship;
 
-public class Grid {
+class Grid {
     String[][] board = new String[10][10];
 
-    Grid() {
+    Grid() {                                //Formats Frame for board to have 1st row 1-9 and 1st column A-I
         for(int i = 1; i < 10; i++) {
             board[0][i] = " " + i + " ";
             board[i][0] = " " + (char)(i + 64) + " ";
@@ -11,14 +11,4 @@ public class Grid {
         }
         board[0][0] = "   ";
     }
-
-    void print(int num) {
-        for(int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
-        }
-    }
-
 }

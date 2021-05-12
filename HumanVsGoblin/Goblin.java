@@ -2,7 +2,7 @@ package HumanVsGoblin;
 
 import java.util.Random;
 
-public class Goblin extends Humanoid {
+class Goblin extends Humanoid {
     protected int potions;
     Goblin(int i) {
         potions = 0;
@@ -13,7 +13,7 @@ public class Goblin extends Humanoid {
 
     public int getPotions() { return potions; }
 
-    public void moveGoblin(int Px, int Py) {
+    void moveGoblin(int Px, int Py) {
         Random rand = new Random();
         if (rand.nextInt(2) == 1)
             if (Math.abs(Px - x) > Math.abs(Py - y)) setX(Px - x > 0 ? 1 : -1);

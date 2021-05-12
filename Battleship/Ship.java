@@ -1,6 +1,6 @@
 package Battleship;
 
-public class Ship {
+class Ship {
     int len;
     String name;
 
@@ -11,7 +11,6 @@ public class Ship {
 
     @Override
     public String toString() {
-
         return "\t" + name + " \thits left: " + len;
     }
 }
