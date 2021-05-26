@@ -1,19 +1,25 @@
 package Battleship;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 import static java.lang.Character.isDigit;
 
 class Battleship {
     public static void main(String[] args) {
         Player[] player = new Player[2];
         int players = menu(player);                                                     //Determine if 0, 1, or 2 players
-
-        for(int round = 0;player[0].fleet.size() > 0 && player[1].fleet.size() > 0;) {  //Round Counter
-            System.out.println("Round: " + ++round);                                    //Alternate between opponents
-            if(player[1].fleet.size() > 0) if(players > 0) humanTurn(player, 1); else computerTurn(player, 1);
-            if(player[0].fleet.size() > 0) if(players < 2) computerTurn(player, 0); else humanTurn(player, 0);
-        }                                                                               //Game Over Response
-        String winner = (players == 1 && player[1].fleet.size() == 0 ? "Better luck next time! " : "Congratulations! ");
-        System.out.print(winner + (player[0].fleet.size() == 0 ? player[1].getName() : player[0].getName()) + " has WON the game!");
+        try {
+            for (int round = 0; player[0].fleet.size() > 0 && player[1].fleet.size() > 0; ) {  //Round Counter
+                System.out.println("Round: " + ++round);                                    //Alternate between opponents
+                if (player[1].fleet.size() > 0) if (players > 0) humanTurn(player, 1);
+                else computerTurn(player, 1);
+                if (player[0].fleet.size() > 0) if (players < 2) computerTurn(player, 0);
+                else humanTurn(player, 0);
+            }                                                                               //Game Over Response
+            String winner = (players == 1 && player[1].fleet.size() == 0 ? "Better luck next time! " : "Congratulations! ");
+            System.out.println(winner + (player[0].fleet.size() == 0 ? player[1].getName() : player[0].getName()) + " has WON the game!");
+        } catch (Exception e) {
+            System.out.println("I don't know how I missed this, but I promise it won't happen again.");
+        }
     }
 
     private static int menu(Player[] player) {
@@ -117,17 +123,17 @@ class Battleship {
         return temp;
     }
     static boolean isInt(String value) {
+        if(value.length() == 0 || value.length() > ("" + Integer.MAX_VALUE).length()) return false;
         String temp = (value.charAt(0) == '-') ? value.substring(1) : value;
-        for(int i = 0; i < temp.length(); i++)
-            if(!isDigit(temp.charAt(i))) return true;
-        return temp.length() == 0;
+        return IntStream.range(0, temp.length()).allMatch(i -> isDigit(temp.charAt(i)));
     }
 
     static int IntChoice() {
-        Scanner cin = new Scanner(System.in);                                       //Init Scanner
+        Scanner cin = new Scanner(System.in);
         String temp;
-        for(temp = cin.nextLine(); isInt(temp);temp = cin.nextLine())
-            if(isInt(temp)) System.out.println("Please try again. " + (temp.equals("") ? "That" : temp) + " is not a valid integer.\n");
+        for(temp = cin.nextLine(); !isInt(temp);temp = cin.nextLine())
+            if (!isInt(temp))
+                System.out.println("Please try again. " + (temp.equals("") ? "That" : temp) + " is not a valid integer.\n");
         return Integer.parseInt(temp);
     }
 }
