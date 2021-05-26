@@ -1,16 +1,27 @@
-package Hangman;
+package HangmanV2;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Hangman {
+public class HangmanV2 {
     public static void main(String[] args) {
-        String temp = "y"; int i;                               //Init variables
+        try {
+            writeToAFile();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        String temp = "y", name;
+        int i;                               //Init variables
         Random rand = new Random();                             //Init Random chooser
         ArrayList<String> word = new ArrayList<>() {{           //Possible Hangman Words
             add("CAT"); add("WINNER");  add("SUCCESS");         //By no means am I suggesting that
             add("DOG"); add("LOOSER");  add("FAILURE");         //cats are better or worse than dogs ;-D
         }};
+
         while (temp.equals("y") || temp.equals("Y")) {          //Setting up for replay ability
             String blank = "", missed = "", pick = word.get(rand.nextInt(word.size()));          //Picks a random word
             boolean winner = false, match = false;
@@ -56,5 +67,18 @@ public class Hangman {
         for(temp = cin.nextLine();temp.length() == 0;temp = cin.nextLine())
             System.out.println("Please try again. That is not a valid string.\n");
         return temp;
+    }
+    static void writeToAFile() throws IOException {
+        Path file = Path.of("src/HangmanV2/gallow.txt");
+        Files.writeString(file,"test", StandardOpenOption.CREATE);
+    }
+
+    ArrayList<String> readAFile() throws IOException {
+        ArrayList<String> read = new ArrayList<>();
+        Path file = Path.of("src/HangmanV2/gallow.txt");
+        if(Files.isReadable(file))
+            Files.lines(file).forEach(read::add);
+        System.out.println(read);
+        return read;
     }
 }
